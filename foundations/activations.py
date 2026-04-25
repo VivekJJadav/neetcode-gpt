@@ -1,9 +1,12 @@
+import numpy as np
+from numpy.typing import NDArray
+
+
 class Solution:
-    def get_minimizer(self, iterations: int, learning_rate: float, init: int) -> float:
-        minimizer = init
+    
+    def sigmoid(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
+        return np.round(1 / (1 + np.exp(-z)), 5)
 
-        for _ in range(iterations):
-            derivative = 2 * minimizer
-            minimizer -= learning_rate * derivative
-
-        return round(minimizer, 5)
+    def relu(self, z: NDArray[np.float64]) -> NDArray[np.float64]:
+        return np.maximum(0, z)
+            
